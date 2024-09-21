@@ -1,7 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include <stdio.h>
+//#include <stdio.h>
+#include <iostream>
 
 #include <windows.h>
 #include <synchapi.h>
@@ -24,11 +25,16 @@ int main()
     while (window.isOpen())
     {
         // SetTimer(NULL, 0, 1000, NULL);
-        Sleep(1000);
+        Sleep(500);
     
 
-        printf("%s\n", sf::Mouse::getPosition().x);
-        printf("%s\n", sf::Mouse::getPosition().y);
+        // printf("%s\n", sf::Mouse::getPosition().x);
+        // printf("%s\n", sf::Mouse::getPosition().y);
+    
+        std::cout << (sf::Mouse::getPosition().x);
+        std::cout << "\n";
+        std::cout << (sf::Mouse::getPosition().y);
+        std::cout << "\n";
     }
 
     while (window.isOpen())
