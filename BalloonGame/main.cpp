@@ -1,11 +1,25 @@
+// TODO
+// Vec2i to str, or just output
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+
+#include <iostream>
+#include <string>
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(400,400), "Game");
-    sf::CircleShape shape(200.f);
-    shape.setFillColor(sf::Color::Red);
+    // Main window, load image
+    sf::RenderWindow window(sf::VideoMode(800,800), "Game");
+    sf::Texture bt;
+    if (!bt.loadFromFile("balloon.png"))
+        return EXIT_FAILURE;
+    sf::Sprite bs(bt);
 
+    // Grab mouse position, need to print to console
+    sf::Vector2i mp = window.getPosition();
+
+    // Main loop
     while (window.isOpen())
     {
         sf::Event event;
@@ -16,7 +30,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(bs);
         window.display();
     }
 
