@@ -1,11 +1,10 @@
-// TODO
-// Vec2i to str, or just output
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include <iostream>
-#include <string>
+#include <stdio.h>
+
+#include <windows.h>
+#include <synchapi.h>
 
 int main()
 {
@@ -18,7 +17,20 @@ int main()
 
     bs.setScale(0.25, 0.25);
 
+    //mX = sf::Mouse::getPosition().x;
+
     // Main loop
+
+    while (window.isOpen())
+    {
+        // SetTimer(NULL, 0, 1000, NULL);
+        Sleep(1000);
+    
+
+        printf("%s\n", sf::Mouse::getPosition().x);
+        printf("%s\n", sf::Mouse::getPosition().y);
+    }
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -30,10 +42,6 @@ int main()
 
         window.clear();
         window.draw(bs);
-
-        // Cannot convert from Vector2i to Vector2f
-        // bs.move(window.getPosition());
-
         window.display();
     }
 
