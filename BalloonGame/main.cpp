@@ -25,6 +25,9 @@ int main()
 
     int MousePositionY = sf::Mouse::getPosition().y;
     int MousePositionX = sf::Mouse::getPosition().x;
+
+    int BalloonX = 0;
+    int BalloonY = 0;
     //mX = sf::Mouse::getPosition().x;
 
     // Main loop
@@ -33,15 +36,30 @@ int main()
         sf::Event event;
         while (MainWindow.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            switch (event.type) {
+            case sf::Event::Closed:
                 MainWindow.close();
+
+            case sf::Event::KeyPressed:
+                if (event.key.code == sf::Keyboard::A) {
+                    BalloonSprite.move(-50, 0);
+                }
+                else if (event.key.code == sf::Keyboard::D) {
+                    BalloonSprite.move(50, 0);
+                }
+                else if (event.key.code == sf::Keyboard::W) {
+                    BalloonSprite.move(0, -50);
+                }
+                else if (event.key.code == sf::Keyboard::S) {
+                    BalloonSprite.move(0, 50);
+                }
+            }
         }
-        switch(event.type ==)
+
         
 
         MainWindow.clear();
         MainWindow.draw(BalloonSprite);
-        BalloonSprite.move(float(MousePositionX), float(MousePositionY));
         MainWindow.display();
 
         // Slow down
