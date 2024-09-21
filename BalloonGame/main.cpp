@@ -10,14 +10,13 @@
 int main()
 {
     // Main window, load image
-    sf::RenderWindow window(sf::VideoMode(800,800), "Game");
+    sf::RenderWindow window(sf::VideoMode(200,200), "Game");
     sf::Texture bt;
     if (!bt.loadFromFile("balloon.png"))
         return EXIT_FAILURE;
     sf::Sprite bs(bt);
 
-    // Grab mouse position, need to print to console
-    sf::Vector2i mp = window.getPosition();
+    bs.setScale(0.25, 0.25);
 
     // Main loop
     while (window.isOpen())
@@ -31,6 +30,10 @@ int main()
 
         window.clear();
         window.draw(bs);
+
+        // Cannot convert from Vector2i to Vector2f
+        // bs.move(window.getPosition());
+
         window.display();
     }
 
