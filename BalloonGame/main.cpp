@@ -1,10 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-//#include <stdio.h>
 #include <iostream>
 
-// Sleep(500);
 #include <Windows.h>
 #include <synchapi.h>
 
@@ -33,18 +31,9 @@ int main()
         VideoMode(DisplayResolution.x, DisplayResolution.y),
         "Game");
     MainWindow.setFramerateLimit(60);
-    
-
-
-    int MousePositionY = Mouse::getPosition().y;
-    int MousePositionX = Mouse::getPosition().x;
-
-    int BalloonX = 0;
-    int BalloonY = 0;
-    //mX = Mouse::getPosition().x;
 
     Sprite balloon = createSmallBalloon(0, 0);
-    // Main loop
+
     while (MainWindow.isOpen())
     {
         Event event;
@@ -57,8 +46,6 @@ int main()
             case Event::MouseButtonPressed:
                 std::cout << (CheckSpriteCollision(balloon, MainWindow));
             }
-        }
-
         
 
         MainWindow.clear();
