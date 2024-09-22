@@ -3,8 +3,9 @@
 
 using namespace sf;
 
+// Creates a small balloon sprite, positioned onscreen with x, y, and scaled by s.
+// Usage: Sprite balloon = createSmallBalloon(0, 0, 0.25f);
 Sprite createSmallBalloon(int x, int y, int s) {
-
     Texture texture;
     texture.loadFromFile("balloon.png");
 
@@ -16,6 +17,14 @@ Sprite createSmallBalloon(int x, int y, int s) {
     return BalloonSprite;
 }
 
+// Checks if the mouse is colliding with a sprite upon click
+// Parameters: Sprite s, RenderWindow w
+/* 
+Usage:
+	if (Mouse::isButtonPressed(Mouse::Button::Left)) {
+		CheckSpriteCollision(balloon, MainWindow); 
+	}
+*/
 int CheckSpriteCollision(Sprite s, RenderWindow& w) {
 	if (Mouse::isButtonPressed(Mouse::Button::Left)) {
 		Vector2i MousePosition = Mouse::getPosition(w);
