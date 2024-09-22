@@ -7,6 +7,6 @@
 #include <SFML/Window.hpp>
 
 sf::Sprite createSmallBalloon(int x, int y);
-int CheckSpriteCollision(sf::Sprite s, sf::RenderWindow& w);
+bool CheckSpriteCollision(sf::Sprite s, sf::RenderWindow& w);
 
 #endif
