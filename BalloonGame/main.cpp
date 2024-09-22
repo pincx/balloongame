@@ -9,7 +9,6 @@
 #include <synchapi.h>
 
 #include "balloon.h"
-#include "mouse.h"
 
 using namespace sf;
 
