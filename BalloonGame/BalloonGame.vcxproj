@@ -149,9 +149,11 @@
   <ItemGroup>
     <ClCompile Include="balloon.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mouse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="balloon.h" />
+    <ClInclude Include="mouse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

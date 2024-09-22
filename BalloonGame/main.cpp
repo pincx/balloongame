@@ -1,14 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include "balloon.h"
-
 //#include <stdio.h>
 #include <iostream>
 
 // Sleep(500);
 #include <Windows.h>
 #include <synchapi.h>
+
+#include "balloon.h"
+#include "mouse.h"
 
 using namespace sf;
 
@@ -43,6 +44,7 @@ int main()
     int BalloonY = 0;
     //mX = Mouse::getPosition().x;
 
+    Sprite balloon = createSmallBalloon(0, 0);
     // Main loop
     while (MainWindow.isOpen())
     {
@@ -54,17 +56,14 @@ int main()
                 MainWindow.close();
 
             case Event::MouseButtonPressed:
-                std::cout << (event.mouseButton.x);
-                std::cout << "\n";
-                std::cout << (event.mouseButton.y);
-                std::cout << "\n";
+                std::cout << (CheckSpriteCollision(balloon, MainWindow));
             }
         }
 
         
 
         MainWindow.clear();
-        MainWindow.draw(createSmallBalloon(30, 40));
+        MainWindow.draw(balloon);
         MainWindow.display();
 
         // Slow down
