@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef BLOON_H
 #define BLOON_H
 
@@ -14,14 +13,14 @@ class Bloon {
 		int b_Speed;
 		bool b_isDead;
 
-		Vector2f b_Position;
-		Texture b_Texture;
+		sf::Vector2f b_Position;
+		sf::Texture b_Texture;
 
 	public:
-		Sprite spawn();
+		Bloon();
+
+		sf::Sprite spawn(int x, int y);
 		void kill();
 		int getHealth();
-		Sprite spawn(int x, int y);
 };
-
 #endif
