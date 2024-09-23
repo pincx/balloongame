@@ -5,7 +5,6 @@
 #include <synchapi.h>
 
 #include "bloon.h"
-
 using namespace sf;
 
 int main() {
