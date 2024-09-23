@@ -2,31 +2,14 @@
 #include <SFML/Window.hpp>
 
 #include "bloon.h"
-
 using namespace sf;
-
-Bloon::Bloon() {
-	b_Health = 5;
-	b_Speed = 0;
-	b_isDead = false;
-	b_Position = Vector2f(0, 0);
-}
-
-Sprite Bloon::spawn(int x, int y) {
-	b_Texture.loadFromFile("balloon.png");
-
-	Sprite b;
-	b.setTexture(b_Texture);
-	b.setPosition(Vector2f(x, y));
-	return b;
-}
 
 // Checks if the mouse is colliding with a sprite upon click
 // Parameters: Sprite s, RenderWindow w
-/* 
+/*
 Usage:
 	if (Mouse::isButtonPressed(Mouse::Button::Left)) {
-		CheckSpriteCollision(balloon, MainWindow); 
+		CheckSpriteCollision(balloon, MainWindow);
 	}
 */
 bool CheckSpriteCollision(Sprite s, RenderWindow& w) {
@@ -47,4 +30,21 @@ bool CheckSpriteCollision(Sprite s, RenderWindow& w) {
 		}
 	}
 	return false;
+}
+
+Bloon::Bloon() {
+	b_Health = 5;
+	b_Speed = 0;
+	b_isDead = false;
+	b_Position = Vector2f(0, 0);
+	b_Texture = Texture();
+}
+
+Sprite Bloon::spawn(int x, int y) {
+	b_Texture.loadFromFile("balloon.png");
+
+	Sprite b;
+	b.setTexture(b_Texture);
+	b.setPosition(Vector2f(x, y));
+	return b;
 }
