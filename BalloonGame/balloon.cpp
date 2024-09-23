@@ -1,20 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+#include "bloon.h"
+
 using namespace sf;
 
-// Creates a small balloon sprite, positioned onscreen with x, y.
-// Usage: Sprite balloon = createSmallBalloon(0, 0);
-Sprite createSmallBalloon(int x, int y) {
-    Texture texture;
-    texture.loadFromFile("balloon.png");
+Bloon::Bloon() {
+	b_Health = 5;
+	b_Speed = 0;
+	b_isDead = false;
+	b_Position = Vector2f(0, 0);
+}
 
-    Sprite BalloonSprite(texture);
+Sprite Bloon::spawn(int x, int y) {
+	b_Texture.loadFromFile("balloon.png");
 
-    BalloonSprite.setPosition(x, y);
-    BalloonSprite.setScale(0.25f, 0.25f);
-
-    return BalloonSprite;
+	Sprite b;
+	b.setTexture(b_Texture);
+	b.setPosition(Vector2f(x, y));
+	return b;
 }
 
 // Checks if the mouse is colliding with a sprite upon click
@@ -42,4 +46,5 @@ bool CheckSpriteCollision(Sprite s, RenderWindow& w) {
 			return false;
 		}
 	}
+	return false;
 }
