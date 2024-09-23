@@ -9,10 +9,9 @@
 using namespace sf;
 
 int main() {
-    enum class state {
-        MENU, INGAME, PAUSE, END
-    };
-    state state = state::INGAME;
+    enum class State {
+        MENU, INGAME, PAUSE, END };
+    State state = State::MENU;
     Vector2f DisplayResolution;
     DisplayResolution.x =
         VideoMode::getDesktopMode().width / 2;
@@ -39,13 +38,6 @@ int main() {
             switch (event.type) {
             case Event::Closed:
                 MainWindow.close();
-
-                MainWindow.clear();
-
-                if (state == state::INGAME) {
-                    for (auto& b : bloons) {
-                        b.getSprite().move(0.1f, 0.1f);
-                    }
             case Event::MouseButtonPressed:
                 if (event.mouseButton.button == Mouse::Left) {
                     if (event.mouseButton.button == Mouse::Left) {
@@ -58,11 +50,8 @@ int main() {
                         }
                     }
                 }
-
-
-                // Create an if statement that only draws the sprite if it is not dead
+                MainWindow.clear();
                 // only draw sprite if it is alive
-
 
                 for (auto it = bloons.begin(); it != bloons.end();) {
                     if (it->isDead()) {
@@ -74,19 +63,6 @@ int main() {
                     }
                 }
                 MainWindow.display();
-
-                // Slow down
-                //i += 1;
-
-                /*if (i == 20) {
-                    std::cout << (Mouse::getPosition().x);
-                    std::cout << "\n";
-                    std::cout << (Mouse::getPosition().y);
-                    std::cout << "\n";
-
-                    i -= 20;
-                */
-                }
             }
         }
     }
