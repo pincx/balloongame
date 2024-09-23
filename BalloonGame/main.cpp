@@ -1,8 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-
 #include <iostream>
-
 #include <Windows.h>
 #include <synchapi.h>
 
@@ -10,16 +8,11 @@
 
 using namespace sf;
 
-int main()
-{
+int main() {
     enum class State {
-        MENU, INGAME, PAUSE
-    };
-
+        MENU, INGAME, PAUSE };
     State state = State::MENU;
-
     Vector2f DisplayResolution;
-
     DisplayResolution.x =
         VideoMode::getDesktopMode().width / 2;
     DisplayResolution.y =
@@ -32,10 +25,6 @@ int main()
         "Game");
     MainWindow.setFramerateLimit(60);
 
-    int balloon = NULL;
-
-    Bloon Bloon();
-
     while (MainWindow.isOpen())
     {
         Event event;
@@ -45,25 +34,27 @@ int main()
             case Event::Closed:
                 MainWindow.close();
 
-            case Event::MouseButtonPressed:
+			case Event::MouseButtonPressed:
+				if (event.mouseButton.button == Mouse::Left) {
+                    Bloon balloon;
+                    balloon.spawn(0, 0);
+				}
+                MainWindow.clear();
+                //MainWindow.draw(balloon);
+                MainWindow.display();
+
+                // Slow down
+                i += 1;
+
+                /*if (i == 20) {
+                    std::cout << (Mouse::getPosition().x);
+                    std::cout << "\n";
+                    std::cout << (Mouse::getPosition().y);
+                    std::cout << "\n";
+
+                    i -= 20;
+                */
             }
-
-
-            MainWindow.clear();
-            //MainWindow.draw(balloon);
-            MainWindow.display();
-
-            // Slow down
-            i += 1;
-
-            /*if (i == 20) {
-                std::cout << (Mouse::getPosition().x);
-                std::cout << "\n";
-                std::cout << (Mouse::getPosition().y);
-                std::cout << "\n";
-
-                i -= 20;
-            */
         }
     }
 }
