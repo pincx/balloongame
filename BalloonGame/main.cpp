@@ -12,7 +12,7 @@ int main() {
     // Game states, used for determining what is drawn onscreen
     enum class State {
         MENU, INGAME, PAUSE, END };
-    State state = State::MENU;
+    State state = State::INGAME;
 
     // display resolution, used as window size
     Vector2f DisplayResolution;
@@ -43,7 +43,7 @@ int main() {
             case Event::Closed:
                 MainWindow.close();
             case Event::MouseButtonPressed:
-                if (event.mouseButton.button == Mouse::Left) {
+                if (event.mouseButton.button == Mouse::Left && state == State::INGAME) {
                     for (auto& b : bloons) {
                         if (CheckSpriteCollision(b.getSprite(), MainWindow)) {
                             b.hit();
@@ -55,15 +55,22 @@ int main() {
                 MainWindow.clear();
 
 				// check if a sprite is "alive" before drawing it
-                for (auto it = bloons.begin(); it != bloons.end();) {
-                    if (it->isDead()) {
-                        it = bloons.erase(it);
-                    }
-                    else {
-                        MainWindow.draw(it->getSprite());
-                        ++it;
+                if (state == State::INGAME) {
+                    for (auto it = bloons.begin(); it != bloons.end();) {
+                        if (it->isDead()) {
+                            it = bloons.erase(it);
+                        }
+                        else {
+                            MainWindow.draw(it->getSprite());
+                            ++it;
+                        }
                     }
                 }
+
+                if (state == State::MENU) {
+
+                }
+
                 MainWindow.display();
             }
         }
