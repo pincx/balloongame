@@ -4,15 +4,6 @@
 #include "bloon.h"
 #include "TextureHolder.h"
 using namespace sf;
-
-// Checks if the mouse is colliding with a sprite upon click
-// Parameters: Sprite s, RenderWindow w
-/*
-Usage:
-	if (Mouse::isButtonPressed(Mouse::Button::Left)) {
-		CheckSpriteCollision(balloon, MainWindow);
-	}
-*/
 bool CheckSpriteCollision(Sprite s, RenderWindow& w) {
 	if (Mouse::isButtonPressed(Mouse::Button::Left)) {
 		Vector2i MousePosition = Mouse::getPosition(w);
@@ -32,7 +23,6 @@ bool CheckSpriteCollision(Sprite s, RenderWindow& w) {
 	}
 	return false;
 }
-
 Bloon::Bloon() {
 	b_Speed = 0;
 	b_Scale = 0.1f;
@@ -40,7 +30,6 @@ Bloon::Bloon() {
 	b_isDead = false;
 	b_Texture = Texture();
 }
-
 Sprite Bloon::spawn(int x, int y) {
 	// in the future, use this:
 	// Bloon.setTexture(TextureHolder::GetTexture("balloon.png"));
@@ -48,26 +37,21 @@ Sprite Bloon::spawn(int x, int y) {
 	Sprite Bloon;
 	Bloon.setTexture(b_Texture);
 	Bloon.setPosition(Vector2f(x, y));
-	
 	b_Health = RandomHealth(1, 3);
 	Bloon.setScale(b_Scale, b_Scale);
 	b_Sprite = Bloon;
 	return Bloon;	
 }
-
 int Bloon::RandomHealth(int min, int max) {
 	int f = rand() % max + min;
 	return f;
 }
-
 void Bloon::hit() {
 	b_Health -= 1;
 	if (b_Health == 0) {
 		b_isDead = true;
 	}
 }
-
-// make a nice random function
 bool Bloon::Random(int min, int max, int o) {
 	int random = rand() % max + min;
 	if (random == o) {

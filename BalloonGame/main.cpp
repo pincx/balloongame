@@ -11,38 +11,30 @@
 using namespace sf;
 
 int main() {
-    // Game states, used for determining what is drawn onscreen
     enum class State {
         MENU, INGAME, PAUSE, END };
 
 	State state = State::MENU;
 
-    // display resolution, used as window size
     Vector2f DisplayResolution;
     DisplayResolution.x =
         VideoMode::getDesktopMode().width / 2;
     DisplayResolution.y =
         VideoMode::getDesktopMode().height / 2;
 
-    // main window, 60 fps limit
     RenderWindow MainWindow(
         VideoMode(DisplayResolution.x, DisplayResolution.y),
         "Game");
     MainWindow.setFramerateLimit(60);
-    
-	// used to store bloons onscreen
+
     std::vector<Bloon> bloons;
+    Bloon balloon;
 
     Menu menu;
 	menu.New(MainWindow.getSize().x / 4, MainWindow.getSize().y / 2);
-
-    Bloon balloon;
-	// main game loop
-
     while (MainWindow.isOpen())
     {
         if (state == State::INGAME) {
-            // bloon spawning
             if (balloon.Random(0, 40, 1)) {
                 balloon.spawn(rand() % MainWindow.getSize().x, rand() % MainWindow.getSize().y);
                 bloons.push_back(balloon);
@@ -51,13 +43,8 @@ int main() {
         if (state == State::MENU) {
             MainWindow.draw(menu.getSprite());
         }
-
         MainWindow.display();
-        std::cout << (static_cast<int>(state));
-
         MainWindow.clear();
-
-        // check if a sprite is "alive" before drawing it
         if (state == State::INGAME) {
             for (auto it = bloons.begin(); it != bloons.end();) {
                 if (it->isDead()) {
