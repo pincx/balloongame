@@ -22,6 +22,8 @@ class Bloon {
 		void hit();
 		int getHealth();
 		int getSpeed();
+		int RandomHealth(int min, int max);
+		bool Random(int min, int max, int o);
 		bool isDead() const { return b_isDead; };
 		sf::Sprite getSprite() const { return b_Sprite; }
 };
