@@ -69,8 +69,6 @@ int main() {
                         for (auto& b : bloons) {
                             if (CheckSpriteCollision(b.getSprite(), MainWindow)) {
                                 b.hit();
-                                std::cout << "hit!\n";
-                                std::cout << b.isDead() << "\n";
                             }
                         }
                     }
