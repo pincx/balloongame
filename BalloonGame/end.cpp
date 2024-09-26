@@ -1,14 +1,17 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-#include "menu.h"
+#include "end.h"
 
 using namespace sf;
 
-Menu::Menu() {
-	m_Texture = Texture();
+EndScreen::EndScreen() {
+	Texture play_Texture;
+	Texture gz_Texture;
+	Texture quit_Texture;
 }
-void Menu::New(int x, int y) {
+void EndScreen::New(int x, int y) {
+	play_Texture.loadFromFile("replay.png");
 	m_Texture.loadFromFile("play button.png");
 	Sprite Menu;
 	Menu.setTexture(m_Texture);

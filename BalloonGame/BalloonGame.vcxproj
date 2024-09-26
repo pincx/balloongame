@@ -148,12 +148,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bloon.cpp" />
+    <ClCompile Include="end.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="TextureHolder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bloon.h" />
+    <ClInclude Include="end.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="TextureHolder.h" />
   </ItemGroup>

@@ -8,7 +8,6 @@
 
 class Menu {
 private:
-	bool m_isActive;
 	sf::Sprite m_Sprite;
 	sf::Texture m_Texture;
 public:
