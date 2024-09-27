@@ -8,19 +8,22 @@
 
 class EndScreen {
 private:
-	sf::Sprite play_Sprite;
-	sf::Sprite gz_Sprite;
-	sf::Sprite quit_Sprite;
-	sf::Texture play_Texture;
-	sf::Texture gz_Texture;
-	sf::Texture quit_Texture;
+	sf::Sprite pSprite;
+	sf::Sprite gSprite;
+	sf::Sprite qSprite;
+	sf::Texture pTexture;
+	sf::Texture gTexture;
+	sf::Texture qTexture;
+
+	sf::Sprite ReplayGameButtonSprite;
+	sf::Sprite CongratulationsSprite;
+	sf::Sprite QuitGameSprite;
 public:
 	EndScreen();
 	void New(int x, int y);
-	bool isActive() const { return m_isActive; };
-	sf::Sprite getPlaySprite() const { return play_Sprite; }
-	sf::Sprite getGzSprite() const { return gz_Sprite; }
-	sf::Sprite getQuitSprite() const { return quit_Sprite; }
+	sf::Sprite getPlaySprite() const { return ReplayGameButtonSprite; }
+	sf::Sprite getGzSprite() const { return CongratulationsSprite; }
+	sf::Sprite getQuitSprite() const { return QuitGameSprite; }
 };
 
 #endif

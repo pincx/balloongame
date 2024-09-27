@@ -6,15 +6,29 @@
 using namespace sf;
 
 EndScreen::EndScreen() {
-	Texture play_Texture;
-	Texture gz_Texture;
-	Texture quit_Texture;
+	Texture pTexture;
+	Texture gTexture;
+	Texture qTexture;
 }
+// horrible
 void EndScreen::New(int x, int y) {
-	play_Texture.loadFromFile("replay.png");
-	m_Texture.loadFromFile("play button.png");
-	Sprite Menu;
-	Menu.setTexture(m_Texture);
-	Menu.setPosition(Vector2f(x, y));
-	m_Sprite = Menu;
+	pTexture.loadFromFile("replay.png");
+	gTexture.loadFromFile("win.png");
+	qTexture.loadFromFile("quit.png");
+	Sprite pSprite;
+	Sprite gSprite;
+	Sprite qSprite;
+	pSprite.setTexture(pTexture);
+	gSprite.setTexture(gTexture);
+	qSprite.setTexture(qTexture);
+	pSprite.setScale(0.625f, 0.625f);
+	gSprite.setScale(0.625f, 0.625f);
+	qSprite.setScale(0.625f, 0.625f);
+	pSprite.setPosition(Vector2f(x, y + (gSprite.getGlobalBounds().height + 20)));
+	qSprite.setPosition(Vector2f(x + (gSprite.getGlobalBounds().width + 20), y));
+	gSprite.setPosition(Vector2f(x, y));
+
+	ReplayGameButtonSprite = pSprite;
+	CongratulationsSprite = gSprite;
+	QuitGameSprite = qSprite;
 }

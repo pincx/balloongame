@@ -13,7 +13,6 @@ private:
 public:
 	Menu();
 	void New(int x, int y);
-	bool isActive() const { return m_isActive; };
 	sf::Sprite getSprite() const { return m_Sprite; }
 };
 
